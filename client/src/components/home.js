@@ -5,7 +5,7 @@ import { Button , Container} from 'react-bootstrap';
 
 
 function Home(){
-   const pageStyle = {
+   const textStyle = {
      backgroundColor: 'transparent', // Set your desired background color
      minHeight: '100vh', // Ensure the background color covers the entire viewport height
      fontFamily: 'Academy Engraved LET',
@@ -13,11 +13,11 @@ function Home(){
      color: 'white',
      textAlign: 'center',
    };
-   const containerStyle = {
+   const pageStyle = {
        textAlign: 'center',
        padding: '50px',
        backgroundColor: '#7a0a04',  // Set your desired background color
-       minHeight: '10vh',  // Ensure the container takes at least the full height of the viewport
+       minHeight: '100vh',  // Ensure the container takes at least the full height of the viewport
      };
    const buttonStyle = {
        fontFamily: 'Times New Roman', // Specify the desired font-family
@@ -37,8 +37,8 @@ function Home(){
        navigate('/joinGame');
      };
    return (
-       <Container style={containerStyle}>
-         <div style={pageStyle}>
+       <Container style={pageStyle}>
+         <div style={textStyle}>
            <header style={pageStyle}>
                <p>PLAY THE LOTTO!!!</p><p>Chance to Win Even</p>
                <button style={buttonStyle} onClick={handleButtonClick}>
