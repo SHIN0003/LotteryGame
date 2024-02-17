@@ -4,17 +4,31 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from your client's origin
+  methods: ['GET', 'POST'], // Adjust according to the methods you're using
+  credentials: true // Allow cookies to be sent
+}));
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
 const roomCode = '3344'; // Function to generate a unique room code
-socket.join(roomCode);
+// socket.join(roomCode);
 
-// Emit the room code to the big screen client
-io.to('bigScreenSocketId').emit('room code', roomCode);
+// // Emit the room code to the big screen client
+// io.to('bigScreenSocketId').emit('room code', roomCode);
 
 
 io.on('connection', (socket) => {
@@ -25,6 +39,8 @@ io.on('connection', (socket) => {
     socket.on('join room', (roomCode) => {
       socket.join(roomCode);
       // Notify the big screen and other players in the room...
+      io.to(roomCode).emit('player joined', socket.id);
+      console.log('User joined room:', roomCode);
     });
     
 
