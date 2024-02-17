@@ -19,7 +19,7 @@ function PickNum(){
                     <p>Pick Four Numbers (1-10)</p>
                     <InputComponent />
                 </header>
-            </div>            <AnimatedButton/>
+            </div>           
         </Container>
         
     );

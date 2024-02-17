@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import PickNum from 'client/src/components/picknum.js';// Adjust the path as needed
+import PickNum from './picknum.js';// Adjust the path as needed
 const socket = io('http://localhost:3001'); // Replace 'http://localhost:3000' with your server address
 
 const JoinGame = () => {
